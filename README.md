@@ -30,7 +30,7 @@ Sebaliknya, **Stateful Widget** memiliki kemampuan untuk menyimpan dan mengelola
 
 - **Scaffold**: Menyediakan kerangka dasar untuk halaman Flutter, seperti `AppBar`, body, dan area floating action button. Dalam proyek ini, `Scaffold` digunakan untuk membuat layout dasar dengan `AppBar` dan konten di body.
 
-- **AppBar**: Menampilkan bagian atas aplikasi yang berfungsi sebagai header, biasanya digunakan untuk judul atau ikon aksi. Dalam proyek ini, `AppBar` menampilkan judul "WeMart".
+- **AppBar**: Menampilkan bagian atas aplikasi yang berfungsi sebagai header, biasanya digunakan untuk judul atau ikon aksi. Dalam proyek ini, `AppBar` menampilkan judul "swift_get".
 
 - **Padding**: Memberikan ruang di sekitar widget untuk memastikan jarak antar elemen di halaman. `Padding` digunakan di beberapa bagian untuk memberikan jarak di sekitar body `Scaffold` dan teks.
 
@@ -66,7 +66,7 @@ Fungsi `setState()` digunakan dalam Stateful Widget untuk melakukan pembaruan ot
 
 ## Perbandingan const dan final
 
-`const` digunakan untuk nilai yang sudah ditentukan dan tidak dapat diubah sejak waktu kompilasi. Nilai `const` bersifat immutable dan harus didefinisikan di awal, contohnya `const Text('WeMart')`. Sementara itu, `final` digunakan untuk nilai yang hanya bisa ditetapkan sekali tetapi bisa diketahui saat runtime. Berbeda dengan `const`, `final` memungkinkan penyimpanan nilai yang mungkin baru diketahui ketika program dijalankan, seperti `final name = "Muhammad Fadhlan Arradhi"`. Perbedaan utamanya adalah `const` merupakan compile-time constant, sementara `final` adalah runtime constant.
+`const` digunakan untuk nilai yang sudah ditentukan dan tidak dapat diubah sejak waktu kompilasi. Nilai `const` bersifat immutable dan harus didefinisikan di awal, contohnya `const Text('swift_get')`. Sementara itu, `final` digunakan untuk nilai yang hanya bisa ditetapkan sekali tetapi bisa diketahui saat runtime. Berbeda dengan `const`, `final` memungkinkan penyimpanan nilai yang mungkin baru diketahui ketika program dijalankan, seperti `final name = "Muhammad Fadhlan Arradhi"`. Perbedaan utamanya adalah `const` merupakan compile-time constant, sementara `final` adalah runtime constant.
 
 ## Langkah-Langkah Membuat Proyek Flutter
 
