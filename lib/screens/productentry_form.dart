@@ -15,7 +15,7 @@ class ProductEntryFormPage extends StatefulWidget {
 class _ProductEntryFormPageState extends State<ProductEntryFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
-  String _Category = 0;
+  String _Category = "";
   int _price = 0;
   String _description = "";
   @override
@@ -72,15 +72,12 @@ class _ProductEntryFormPageState extends State<ProductEntryFormPage> {
                   ),
                   onChanged: (String? value) {
                     setState(() {
-                      _Category = int.tryParse(value!) ?? 0;
+                      _Category = value!;
                     });
                   },
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return "Category tidak boleh kosong!";
-                    }
-                    if (int.tryParse(value) == null) {
-                      return "Category harus berupa angka!";
                     }
                     return null;
                   },
