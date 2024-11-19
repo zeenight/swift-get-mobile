@@ -16,9 +16,7 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 
-TUGAS1
-
-# Project Title
+# TUGAS1
 
 ## Pengantar Widget Stateless dan Stateful di Flutter
 
@@ -32,7 +30,7 @@ Sebaliknya, **Stateful Widget** memiliki kemampuan untuk menyimpan dan mengelola
 
 - **Scaffold**: Menyediakan kerangka dasar untuk halaman Flutter, seperti `AppBar`, body, dan area floating action button. Dalam proyek ini, `Scaffold` digunakan untuk membuat layout dasar dengan `AppBar` dan konten di body.
 
-- **AppBar**: Menampilkan bagian atas aplikasi yang berfungsi sebagai header, biasanya digunakan untuk judul atau ikon aksi. Dalam proyek ini, `AppBar` menampilkan judul "WeMart".
+- **AppBar**: Menampilkan bagian atas aplikasi yang berfungsi sebagai header, biasanya digunakan untuk judul atau ikon aksi. Dalam proyek ini, `AppBar` menampilkan judul "swift_get".
 
 - **Padding**: Memberikan ruang di sekitar widget untuk memastikan jarak antar elemen di halaman. `Padding` digunakan di beberapa bagian untuk memberikan jarak di sekitar body `Scaffold` dan teks.
 
@@ -68,7 +66,7 @@ Fungsi `setState()` digunakan dalam Stateful Widget untuk melakukan pembaruan ot
 
 ## Perbandingan const dan final
 
-`const` digunakan untuk nilai yang sudah ditentukan dan tidak dapat diubah sejak waktu kompilasi. Nilai `const` bersifat immutable dan harus didefinisikan di awal, contohnya `const Text('WeMart')`. Sementara itu, `final` digunakan untuk nilai yang hanya bisa ditetapkan sekali tetapi bisa diketahui saat runtime. Berbeda dengan `const`, `final` memungkinkan penyimpanan nilai yang mungkin baru diketahui ketika program dijalankan, seperti `final name = "Muhammad Fadhlan Arradhi"`. Perbedaan utamanya adalah `const` merupakan compile-time constant, sementara `final` adalah runtime constant.
+`const` digunakan untuk nilai yang sudah ditentukan dan tidak dapat diubah sejak waktu kompilasi. Nilai `const` bersifat immutable dan harus didefinisikan di awal, contohnya `const Text('swift_get')`. Sementara itu, `final` digunakan untuk nilai yang hanya bisa ditetapkan sekali tetapi bisa diketahui saat runtime. Berbeda dengan `const`, `final` memungkinkan penyimpanan nilai yang mungkin baru diketahui ketika program dijalankan, seperti `final name = "Muhammad Fadhlan Arradhi"`. Perbedaan utamanya adalah `const` merupakan compile-time constant, sementara `final` adalah runtime constant.
 
 ## Langkah-Langkah Membuat Proyek Flutter
 
@@ -107,3 +105,105 @@ Untuk mempercantik tampilan, setiap tombol akan memiliki warna yang berbeda dan 
               snackBarText = "Kamu telah menekan tombol";
           }
 ```
+
+# TUGAS 2
+# Dokumentasi Penggunaan `const`, `Column` dan `Row`, Elemen Input, Tema, dan Navigasi di Flutter
+
+## 1. Apa Kegunaan `const` di Flutter?
+
+`const` digunakan di Flutter untuk membuat objek yang bersifat **immutable** atau konstan, yang berarti nilainya tidak dapat diubah setelah ditetapkan. Beberapa keuntungan menggunakan `const` adalah:
+- **Efisiensi Memori**: Objek `const` hanya dibuat sekali dan disimpan dalam memori, sehingga menghemat penggunaan memori ketika objek yang sama dipanggil berulang kali.
+- **Kinerja Lebih Baik**: Karena `const` memperbolehkan penggunaan **compile-time constants**, aplikasi akan berjalan lebih cepat karena nilai objek sudah diketahui dan tidak perlu dievaluasi ulang saat runtime.
+
+### Kapan Sebaiknya Menggunakan `const`?
+
+- **Gunakan `const`** untuk widget atau nilai yang tidak akan berubah, terutama pada komponen yang selalu tampil sama setiap kali dirender.
+- **Jangan gunakan `const`** jika nilai atau widget dapat berubah selama runtime, seperti nilai yang bergantung pada input pengguna atau state aplikasi.
+
+## 2. Perbandingan Penggunaan `Column` dan `Row` di Flutter
+
+`Column` dan `Row` adalah widget tata letak dasar di Flutter untuk mengatur widget anak dalam arah vertikal dan horizontal.
+
+### `Column`
+`Column` menyusun widget anak dalam arah vertikal (dari atas ke bawah).
+
+**Contoh Implementasi Column**:
+```dart
+Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: <Widget>[
+    Text("Hello"),
+    Text("World"),
+  ],
+),Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: <Widget>[
+    Icon(Icons.star),
+    Text("Flutter"),
+  ],
+)
+```
+## 3. Elemen Input pada Halaman Form
+
+Elemen input yang digunakan pada halaman form di Flutter bisa meliputi:
+
+- **TextField**: Untuk menerima input teks.
+- **DropdownButton**: Untuk menampilkan pilihan yang bisa dipilih.
+- **Checkbox**: Untuk input pilihan biner (ya atau tidak).
+- **RadioButton**: Untuk input pilihan tunggal dari beberapa opsi.
+
+### Elemen Input yang Tidak Digunakan
+
+Beberapa elemen input Flutter yang mungkin tidak digunakan adalah:
+
+- **Slider**: Digunakan untuk input nilai dengan rentang tertentu, cocok untuk mengatur tingkat volume atau persentase.
+- **Switch**: Untuk input pilihan biner dalam bentuk sakelar, sering digunakan untuk pengaturan.
+- **DatePicker**: Untuk input tanggal, berguna dalam aplikasi yang membutuhkan pengaturan tanggal.
+
+## 4. Pengaturan Tema dalam Aplikasi Flutter
+
+Untuk mengatur tema agar konsisten di seluruh aplikasi Flutter, `ThemeData` dapat digunakan di dalam widget `MaterialApp`. Beberapa aspek tema yang bisa diatur meliputi:
+
+- **Primary Color**: Warna utama aplikasi.
+- **Accent Color**: Warna sekunder yang digunakan untuk sorotan.
+- **TextTheme**: Untuk mengatur gaya teks secara global.
+
+- # Panduan Penggunaan Elemen Input, Tema, dan Navigasi di Flutter
+
+## 3. Elemen Input pada Forms Tugas
+
+Pada formulir tugas ini, beberapa elemen input yang digunakan antara lain:
+- **TextFormField**: Untuk menerima teks dari pengguna.
+- **DropdownButtonFormField**: Menyediakan daftar opsi yang dapat dipilih.
+- **ElevatedButton**: Berfungsi untuk mengirim data setelah pengguna mengisi formulir.
+
+### Elemen Input Lain yang Tersedia namun Tidak Digunakan
+Flutter juga memiliki beberapa elemen input lain yang tidak digunakan dalam tugas ini:
+- **Checkbox**: Untuk membuat pilihan biner yang dapat dicentang.
+- **Switch**: Menyediakan opsi on/off.
+- **Radio**: Menyediakan pilihan tunggal dari beberapa pilihan yang tersedia.
+- **Slider**: Digunakan untuk memilih nilai dalam suatu rentang.
+- **DatePicker**: Memungkinkan pemilihan tanggal.
+- **TimePicker**: Memungkinkan pemilihan waktu.
+
+Elemen-elemen ini bisa dipakai sesuai kebutuhan aplikasi. Sebagai contoh, `Switch` bermanfaat untuk mengatur pilihan on/off, dan `Slider` bisa digunakan untuk input yang membutuhkan nilai dalam rentang tertentu.
+
+## 4. Pengaturan Tema (Theme) dalam Aplikasi Flutter
+
+Untuk menciptakan tampilan yang konsisten, Flutter menyediakan `ThemeData` di widget `MaterialApp`. `ThemeData` memungkinkan pengaturan tema dengan berbagai opsi, seperti:
+- **Color Scheme**: Mengatur warna utama dan sekunder aplikasi.
+- **TextTheme**: Untuk mengatur gaya teks secara keseluruhan.
+- **ButtonTheme**: Mendefinisikan tampilan tombol di seluruh aplikasi.
+
+### Implementasi Tema di Tugas Ini
+Pada file `main.dart`, telah diatur tema dasar menggunakan `ThemeData`, dengan fokus pada skema warna default. Meskipun belum banyak pengaturan tambahan seperti `textTheme` atau `buttonTheme`, aplikasi tetap mendapatkan konsistensi warna dan gaya yang dapat diterapkan ke berbagai elemen UI.
+
+## 5. Pengaturan Navigasi dalam Aplikasi
+
+Untuk mengatur perpindahan halaman, aplikasi ini menggunakan pendekatan berikut:
+- **Navigator.push** dan **Navigator.pushReplacement**: Digunakan untuk membuka halaman baru. `pushReplacement` menggantikan halaman yang sedang dibuka, yang membantu mengurangi tumpukan halaman pada memori.
+- **Navigator.pop**: Digunakan untuk kembali ke halaman sebelumnya.
+
+Selain itu, terdapat **Drawer** yang diimplementasikan di file `left_drawer.dart`. Drawer ini memudahkan pengguna untuk mengakses halaman tertentu dari menu samping. Pendekatan ini memungkinkan pengguna membuka halaman tambahan tanpa harus keluar dari halaman utama, dan mereka dapat kembali ke halaman utama dengan menutup halaman yang sedang dibuka.
+
+
