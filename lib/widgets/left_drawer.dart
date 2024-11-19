@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:swift_get/screens/list_productentry.dart';
 import 'package:swift_get/screens/menu.dart';
 import 'package:swift_get/screens/productentry_form.dart';
 
@@ -27,12 +29,12 @@ class LeftDrawer extends StatelessWidget {
                 ),
                 Padding(padding: EdgeInsets.all(8)),
                 Text(
-                  "Ayo Berbisnis disini",
-                  textAlign: TextAlign.center, // Menyelaraskan teks ke tengah
+                  "Belanja Cepat, Harga Tepat – Semua yang Kamu Butuhkan Ada di Sini!",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 15, // Ukuran font 15
-                    color: Colors.white, // Warna teks putih
-                    fontWeight: FontWeight.normal, // Bobot font biasa
+                    fontSize: 15,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.white,
                   ),
                 ),
               ],
@@ -51,16 +53,29 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.mood),
-            title: const Text('Tambah Product'),
-            // Bagian redirection ke ProductentryFormPage
+            leading: const Icon(Icons.add),
+            title: const Text('Tambah Item'),
+            // Bagian redirection ke ProductEntryFormPage
             onTap: () {
               Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProductEntryFormPage(),
+                  ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.list),
+            title: const Text('Daftar Item'),
+            onTap: () {
+              // Route menu ke halaman mood
+              Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProductentryFormPage()),
+                MaterialPageRoute(
+                    builder: (context) => const ProductEntryPage()),
               );
             },
-          ), // TODO: Bagian routing
+          ),
         ],
       ),
     );
