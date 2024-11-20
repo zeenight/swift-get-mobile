@@ -207,3 +207,88 @@ Untuk mengatur perpindahan halaman, aplikasi ini menggunakan pendekatan berikut:
 Selain itu, terdapat **Drawer** yang diimplementasikan di file `left_drawer.dart`. Drawer ini memudahkan pengguna untuk mengakses halaman tertentu dari menu samping. Pendekatan ini memungkinkan pengguna membuka halaman tambahan tanpa harus keluar dari halaman utama, dan mereka dapat kembali ke halaman utama dengan menutup halaman yang sedang dibuka.
 
 
+#TUGAS 3
+# README.md
+
+## Penjelasan Penting Terkait Implementasi Data JSON, Library `http`, dan Mekanisme Autentikasi
+
+### 1. **Mengapa Perlu Membuat Model untuk Mengambil/Mengirim Data JSON?**
+Model diperlukan untuk mempermudah pengelolaan data JSON. Berikut alasannya:
+- **Struktur Data yang Konsisten**: Model menjamin format data yang seragam, baik saat mengambil data dari API maupun saat mengirimkan data.
+- **Validasi Data**: Dengan model, kita dapat memastikan bahwa data yang diterima/dikirim sesuai dengan format yang diharapkan.
+- **Efisiensi Pengelolaan Kode**: Model memungkinkan pengelolaan data JSON menjadi lebih modular dan mudah dipelihara.
+- **Mengurangi Error**: Tanpa model, manipulasi data JSON yang tidak sesuai struktur berisiko memunculkan error seperti kesalahan parsing atau referensi atribut yang tidak ada.
+
+Jika kita tidak membuat model terlebih dahulu, pengelolaan data akan menjadi sulit, terutama jika data JSON memiliki struktur yang kompleks. Selain itu, kemungkinan terjadi error sangat tinggi karena data tidak divalidasi sebelum digunakan.
+
+---
+
+### 2. **Fungsi Library `http`**
+Library `http` dalam Flutter digunakan untuk melakukan permintaan HTTP ke server (API). Fungsi utamanya meliputi:
+- **Mengirim Permintaan**: Melakukan request seperti `GET`, `POST`, `PUT`, dan `DELETE` ke API.
+- **Menerima Respon**: Mengelola respons dari server, termasuk status code dan isi data (body).
+- **Pengelolaan Header**: Mendukung penambahan informasi seperti autentikasi token, tipe konten (`Content-Type`), dan lainnya.
+- **Parsing Data JSON**: Data yang diterima dalam format JSON dapat diproses langsung untuk digunakan dalam aplikasi.
+
+Library ini sangat penting karena menjadi penghubung antara aplikasi Flutter dan backend.
+
+---
+
+### 3. **Fungsi CookieRequest**
+`CookieRequest` adalah utilitas yang digunakan untuk menangani autentikasi berbasis cookie pada Flutter. Fungsi utamanya:
+- **Menyimpan Cookie**: Menyimpan data autentikasi (seperti session ID) yang diberikan oleh server, sehingga tidak perlu login ulang untuk setiap request.
+- **Mengelola Status Login**: Memastikan bahwa state autentikasi tetap terjaga selama aplikasi berjalan.
+- **Mendukung Akses Keamanan**: Dengan cookie, data sensitif dapat dilindungi menggunakan metode otentikasi server-side.
+
+**Mengapa Instance CookieRequest Dibagikan ke Semua Komponen?**
+- Instance yang dibagikan memungkinkan setiap bagian aplikasi (misalnya halaman atau widget) menggunakan cookie yang sama untuk autentikasi dan pengambilan data.
+- Hal ini memastikan bahwa seluruh aplikasi memiliki konsistensi dalam pengelolaan autentikasi dan tidak perlu membuat ulang instance untuk setiap request.
+
+---
+
+### 4. **Mekanisme Pengiriman Data**
+Berikut adalah alur pengiriman data dari input hingga ditampilkan di Flutter:
+1. **Input Data**: Pengguna mengisi formulir atau memberikan input melalui antarmuka Flutter.
+2. **Pemrosesan Data**: Data dari pengguna dikemas dalam format JSON menggunakan model yang sesuai.
+3. **Pengiriman Data**: Data dikirimkan ke backend melalui HTTP request (misalnya menggunakan `POST`).
+4. **Proses Backend**: Backend menerima data, memvalidasi, dan menyimpan ke database.
+5. **Respons Backend**: Backend mengirimkan respons ke Flutter, biasanya dalam format JSON.
+6. **Parsing di Flutter**: Data JSON dari respons diubah menjadi model objek menggunakan deserialization.
+7. **Menampilkan Data**: Data yang sudah diproses kemudian ditampilkan dalam UI Flutter.
+
+---
+
+### 5. **Mekanisme Autentikasi**
+Berikut adalah alur autentikasi dari login, register, hingga logout:
+
+#### **Login**
+1. **Input Data Akun**: Pengguna memasukkan email/username dan password di aplikasi Flutter.
+2. **Pengiriman Data**: Flutter mengirimkan data tersebut ke endpoint login pada backend Django.
+3. **Validasi di Django**:
+   - Django memeriksa kredensial apakah sesuai dengan database.
+   - Jika berhasil, server membuat session dan mengirimkan cookie autentikasi ke Flutter.
+4. **Penyimpanan Cookie**: Cookie disimpan oleh `CookieRequest` untuk autentikasi di request selanjutnya.
+5. **Tampilan Menu**: Jika login berhasil, aplikasi akan mengarahkan pengguna ke menu utama.
+
+#### **Register**
+1. **Input Data Akun Baru**: Pengguna mengisi formulir pendaftaran di aplikasi Flutter.
+2. **Pengiriman Data**: Flutter mengirimkan data ke endpoint register Django menggunakan request `POST`.
+3. **Proses di Django**:
+   - Django memvalidasi data dan membuat akun baru di database.
+   - Jika berhasil, Django mengirimkan respons ke Flutter.
+4. **Notifikasi**: Aplikasi Flutter memberikan notifikasi bahwa pendaftaran berhasil.
+
+#### **Logout**
+1. **Permintaan Logout**: Pengguna memilih opsi logout di aplikasi.
+2. **Penghapusan Session**:
+   - Flutter mengirimkan permintaan logout ke backend Django.
+   - Django menghapus session pengguna dan mengembalikan respons.
+3. **Reset State Aplikasi**: Cookie dihapus, dan aplikasi kembali ke halaman login.
+
+Mekanisme ini memastikan bahwa autentikasi aman dan data pengguna terlindungi, baik dalam proses login, register, maupun logout.
+
+---
+
+Demikian penjelasan terkait implementasi data JSON, library `http`, CookieRequest, dan mekanisme autentikasi dalam Flutter dan Django. Dengan memahami alur ini, pengembangan aplikasi menjadi lebih terstruktur dan aman.
+
+
